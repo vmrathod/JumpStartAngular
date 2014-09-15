@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Angular Sample1</title>
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body ng-init="peolpe=[{name:'Vishal Rathod',city:'Amreli',joined:'2000-12-03',orderTotal:'99.890'},{name:'Dhaval Kacha',city:'Rajkot',joined:'2010-10-03',orderTotal:'30.567'},{name:'Dipesh Barot',city:'Gandhinagar',joined:'2011-10-03',orderTotal:'450.567'}]">
+<h1>Customer List</h1>
+Filter:<input type="text" ng-model="customerFilter.name">
+<table>
+    <tr>
+        <th ng-click="sortBy='name';reverse=!reverse" >Name</th>
+        <th ng-click="sortBy='city';reverse=!reverse">City</th>
+        <th ng-click="sortBy='joined';reverse=!reverse">Joined</th>
+        <th ng-click="sortBy='orderTotal';reverse=!reverse">Total</th>
+    </tr>
+    <tr ng-repeat="person in peolpe | filter:customerFilter | orderBy:sortBy:reverse">
+        <td>{{person.name | uppercase}}</td>
+        <td>{{person.city | lowercase}}</td>
+        <td>{{person.joined | date}}</td>
+        <td>{{person.orderTotal | currency}}</td>
+    </tr>
+ </table>
+<script src="scripts/angular.min.js" ></script>
+</body>
+</html>
